@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    index
+{% endblock %}
+
+{% block main %}
+
+
+<table>
+        <thead>
+            <tr>
+                <th>busno</th>
+                <th>busname</th>
+                <th>depart</th>
+                <th>departtime</th>
+                <th>arrived</th>
+                <th>arrivedtime</th>
+            </tr>
+        </thead>
+
+        <tfoot>
+            <tr>
+                <td colspan="3"></td>
+                <td>{{ busname }}</td>
+            </tr>
+        </tfoot>
+
+        <tbody>
+            {% for element in data %}
+                <tr>
+                    <td>{{ element.busno }}</td>
+                    <td>{{ element.busname }}</td>
+                    <td>{{ element.depart }}</td>
+                    <td>{{ element.departtime }}</td>
+                    <td>{{ element.arrived }}</td>
+                    <td>{{ element.arrivedtime }}</td>
+
+                </tr>
+            {% endfor %}
+<!--
+            <tr>
+                <td colspan="3">fare</td>
+                <td>676</td>
+            </tr>-->
+        </tbody>
+    </table>
+
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: brown;
+  color: white;
+}
+</style>
+
+{% endblock %}

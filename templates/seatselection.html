@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            </head>
+            <body background="/static/background4.jpg">
+
+                    <div class="logo">
+                       <img alt="image" src= /static/TSRTC.png >
+                    </div>
+                    <div>
+                       <h1> TSRTC-online bus reservation </h1>
+                    </div>
+                    {% if session.user_id %}
+                    <nav>
+                        <li><a href="/logout">logout</a></li>
+                    </nav>
+                    {% else %}
+                    <nav>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Register</a></li>
+                    </nav>
+                    {% endif %}
+                    <div class="btn-group">
+                        <a href="/search"><button class="button">Search</button></a>
+                        <a href="/buses"><button class="button">Buses</button></a>
+                        <a href="/track"><button class="button">Track</button></a>
+                        <a href="/Seatavailability"><button class="button">Seat availability</button></a>
+                  </div>
+
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alertalert-primarybordertext-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+        <div class="displayarea">
+<div class="box">
+<form id=seat action="/seatselection" method="POST">
+  {% for i in range(1, 51) %}
+    {% if i== selectedseat %}
+<label><input type="checkbox" class="size" name="seats" value= {{ i }} checked >{{ [i] }} </label>
+    {% else %}
+<label><input type="checkbox" class="size" name="seats" value= {{ i }} >{{ [i] }} </label>
+  {% endif %}
+{% endfor %}
+
+  <button class="button button2"> confirm </button>
+</form>
+</div>
+</div>
+<style>
+
+  #seat {
+    display:grid;
+    grid-template-columns: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px 50px 50px;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    grid-template-areas:
+    "1 2 3 4 5 6 7 8 9 10"
+    "11 12 13 14 15 16 17 18 19 20"
+    "21 22 23 24 25 26 27 28 29 30"
+    "31 32 33 34 35 36 37 38 39 40"
+    "41 42 43 44 45 46 47 48 49 50";
+    width:100%;
+    height:100%;
+}
+lo {
+
+    border:5px;
+    width:10px;
+    height:10px;
+}
+label{
+    text-align: center;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+
+}
+.button {
+
+    background-color: #4CAF50; /* Green */
+    border: 2px rosybrown;
+    color: white;
+   /* padding: 15px 32px;*/
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    /*margin: 4px 2px;*/
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+  }
+
+
+  .button2:hover {
+    box-shadow: 0 6px 8px 0 rgba(189, 172, 172, 0.986),0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
+</style>
+
+    <style>
+
+body {
+    background-size: 100% 100%;
+    width:100vw;
+    height:100vh;
+    overflow-wrap: normal;
+    display: grid;
+    grid-template-columns: 15% auto 10%;
+    grid-template-rows: 20% auto;
+    grid-template-areas:
+      "log header navi"
+      "sidebar main main";
+}
+
+img {
+    grid-area: log;
+  align-content: center;
+    widows: 100px;
+    height:100px;
+}
+
+h1 {
+    grid-area:header;
+    color:lightcyan;
+    text-align:center;
+  }
+
+
+  nav li {
+      grid-area:navi;
+    text-decoration-style: none;
+     align-content: flex-end;
+     display:inline-block;
+   }
+
+   li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  a:hover:not(.active) {
+    background-color: rgb(226, 218, 218);
+  }
+
+  .active {
+    background-color:#4CAF50;
+  }
+.item-b{
+ margin-bottom:20px;
+  display:grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 100%;
+  grid-template-areas:
+  "a1 a2 b1 b2";
+
+}
+.b2{
+  align-self: end;
+}
+.input-field {
+    width:200px;
+}
+
+  .btn-group{
+      margin-top:25px;
+  }
+
+   .btn-group .button {
+    grid-area: sidebar;
+    background-color: #4CAF50;
+    border: 1px solid green;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    width: 150px;
+    display: block;
+  }
+
+  .btn-group .button:not(:last-child) {
+    border-bottom: none;
+  }
+
+  .btn-group .button:hover {
+    background-color: #3e8e41;
+  }
+
+.displayarea {
+    grid-area: main;
+
+    width:100%;
+    height:80%;
+    background-color: rgb(49, 68, 80);
+    border:2px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(182, 153, 153, 0.2), 0 6px 20px 0 rgba(114, 235, 168, 0.19);
+  }
+  #name-label{
+   color:lightgoldenrodyellow;
+    font-size: 20px;
+  }
+.button {
+  background-color: #4CAF50; /* Green */
+  border: 2px rosybrown;
+  color: white;
+ /* padding: 15px 32px;*/
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  /*margin: 4px 2px;*/
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+
+.button2:hover {
+  box-shadow: 0 6px 8px 0 rgba(189, 172, 172, 0.986),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.alertalert-primarybordertext-center {
+
+    color:white;
+}
+
+    </style>

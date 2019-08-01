@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    search
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped" id="customers">
+        <thead>
+            <tr>
+                <th>Busno</th>
+                <th>Busname</th>
+                <th>Depart</th>
+                <th>Departtime</th>
+                <th>Arrived</th>
+                <th>Arrivedtime</th>
+                <th>Fare</th>
+                <th>Book</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for element in data %}
+                <tr>
+                    <td>{{ element.busno }}</td>
+                    <td>{{ element.busname }}</td>
+                    <td>{{ element.depart }}</td>
+                    <td>{{ element.departtime }}</td>
+                    <td>{{ element.arrived }}</td>
+                    <td>{{ element.arrivedtime }}</td>
+                    <td>{{ element.fare }}</td>
+                     <td> <input type="submit" value="{{ element.busno }}"> <a href="/seatselection" method="POST">Book</a></td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+<style>
+
+    #customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+tbody {
+    background-color: bisque;
+}
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child{background-color: #ddd;}
+
+#customers tr:hover {background-color: #f2f2f2;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: blue;
+  color: white;
+}
+
+</style>
+
+{% endblock %}

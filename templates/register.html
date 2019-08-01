@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+
+            </head>
+            <body background="/static/background4.jpg">
+
+                    <div class="logo">
+                       <img alt="image" src= /static/TSRTC.png >
+                    </div>
+                    <div>
+                       <h1> TSRTC-online bus reservation </h1>
+                    </div>
+                    <nav>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Register</a></li>
+                    </nav>
+
+
+<div class="displayarea">
+
+    <form method="post" action ="/register">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="confirmation" placeholder="Password (again)" type="password"/>
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+
+
+
+        </div>
+    </body>
+</html>
+
+
+<style>
+
+body {
+    background-size: 100% 100%;
+    width:100vw;
+    height:100vh;
+    overflow-wrap: normal;
+    display: grid;
+    grid-template-columns: 15% auto 10%;
+    grid-template-rows: 20% auto;
+    grid-template-areas:
+      "log header navi"
+      "sidebar main main";
+}
+
+img {
+    grid-area: log;
+  align-content: center;
+    widows: 100px;
+    height:100px;
+}
+
+h1 {
+    grid-area:header;
+    color:lightcyan;
+    text-align:center;
+  }
+
+
+  nav li {
+      grid-area:navi;
+    text-decoration-style: none;
+     align-content: flex-end;
+     display:inline-block;
+   }
+
+   li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  a:hover:not(.active) {
+    background-color: rgb(226, 218, 218);
+  }
+
+  .active {
+    background-color:#4CAF50;
+  }
+
+
+.displayarea {
+    grid-area: main;
+
+    width:100%;
+    height:80%;
+    background-color: rgb(49, 68, 80);
+    border:2px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(182, 153, 153, 0.2), 0 6px 20px 0 rgba(114, 235, 168, 0.19);
+  }
+
+  </style>
